@@ -5,7 +5,7 @@ struct Dinic{
 	};
 	vector<int> l;
 	vector<vector<edge>> e;
-	Dinic(int n) : e(n+1), l(n+1){}
+	Dinic(int n) : e(n+1){}
 	void addEdge(int u, int v, int w){//directed
 		e[u].push_back(edge(v, w, e[v].size()));
 		e[v].push_back(edge(u, 0, e[u].size()-1));
@@ -14,7 +14,7 @@ struct Dinic{
 		return e[E.t][E.r];
 	}
 	bool bfs(int s, int t){
-		l.assign(l.size(), INF);
+		l.assign(e.size(), INF);
 		l[s]=1;
 		queue<int> Q;
 		for(Q.push(s); !Q.empty(); Q.pop()){
