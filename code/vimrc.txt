@@ -1,0 +1,22 @@
+.vimrc
+set nocompatible
+set backspace=indent,eol,start
+set history=100
+set ruler
+set showcmd
+set incsearch
+set hlsearch
+map Z gg=G
+syntax on
+filetype plugin indent on
+set cursorline
+set number
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set smartindent
+set whichwrap=b,s,<,>,[,]
+set autoread
+set background=dark
+set showmatch
+set smarttab

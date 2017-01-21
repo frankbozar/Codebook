@@ -1,0 +1,221 @@
+\documentclass [landscape,8pt,a4paper,twocolumn]{article}
+\title {NCTU\_Foudre Codebook}
+\usepackage{parskip}
+\usepackage{xeCJK} 
+%\setCJKmainfont{微軟正黑體}
+\setCJKmainfont{cwTeXKai}
+\setmonofont{DejaVu Sans Mono}
+\usepackage {amsmath}
+\usepackage {listings}
+\usepackage {color}
+\usepackage [left=1.0cm, right=1.0cm, top=2.0cm, bottom=0.5cm]{geometry}
+\definecolor {mygreen}{rgb}{0,0.6,0}
+\definecolor {mygray}{rgb}{0.5,0.5,0.5}
+\definecolor {mymauve}{rgb}{0.58,0,0.82}
+\usepackage{fancyheadings}
+\rhead{\thepage}
+\lhead{National Chiao Tung University, NCTU\_Foudre}
+\pagestyle{fancy}
+\cfoot{}
+\setlength{\headsep}{5pt}
+\setlength{\textheight}{540pt}
+
+\lstset { %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize\ttfamily,               % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=4pt,                   % how far the line-numbers are from the code
+  numberstyle=\scriptsize\ttfamily\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  xleftmargin=15pt,
+%  xtopmargin=-15pt,
+  framexleftmargin=15pt,
+  framexrightmargin=0pt,
+  framexbottommargin=0pt,
+  framextopmargin=0pt,
+}
+
+\usepackage{xpatch}
+\makeatletter
+\@addtoreset{section}{part}
+\xpatchcmd{\@part}{\normalfont}{\normalfont\centering}{}{}
+\xpatchcmd{\@part}{\Large}{\LARGE}{}{}
+\renewcommand\partname{Topic}
+\makeatother
+
+\begin {document}
+\thispagestyle{fancy}
+{ \Huge National Chiao Tung University \\ Team Reference Document}
+\tableofcontents
+
+\newpage
+\lstinputlisting [language=sh] {code/vimrc.txt}
+\#pragma GCC optimize (2)
+
+\newpage
+\part{Math}
+
+\section{Extended Euclidean}
+Find $ x, \, y \text{ s.t. } ax+by=gcd(a, \, b) $
+\lstinputlisting [language=c++] {code/ext_gcd.cpp}
+
+\section{Mod Equation}
+Find $ x \text{ s.t. } ax \equiv b(mod \, n) $
+\lstinputlisting [language=c++] {code/mod_eq.cpp}
+
+\section{Chinese Remainder Theorem}
+Find $ x \text{ s.t. } x \equiv a_i(mod \, m_i) $
+\lstinputlisting [language=c++] {code/crt.cpp}
+
+\section{Miller–Rabin Primality Test}
+\lstinputlisting [language=c++] {code/miller_rabin.cpp}
+
+\section{Rho Algorithm for Factorization}
+Find a non-trivial divisor of composite $ n $ in $ O(\sqrt[4]{n}) $
+\lstinputlisting [language=c++] {code/rho_fact.cpp}
+
+\section{Rho Algorithm for Logarithm}
+Let $ a $ be a generator of $ Z_{p}^{*} $, find $ \log_{a}{b} mod n $ in $ O(\sqrt{n}) $
+
+\section{Mobius Function}
+\[\mu (n) =
+ 	\begin{cases}
+		0	& \, \text{if } \exists \, p^2 \mid n \\
+		(-1)^{\text{number of prime factors of } n}	& \, \text{otherwise} \\
+	\end{cases}
+\]
+\[\sum_{d \mid n} \mu(d) =
+	\begin{cases}
+    	1	& \, \text{if } n=1 \\
+        0	& \, \text{if } n>1 \\
+	\end{cases}
+\]
+For numerical functions $ f(n) \text{ and } F(n) $ , if
+\[
+	F(n)=\sum_{d \mid n}f(d)
+\]
+then
+\[
+	f(n)=\sum_{d \mid n}\mu(d)F(\frac{n}{d})
+\]
+\lstinputlisting [language=c++] {code/mobius.cpp}
+
+\section{Phi Function}
+$ \phi(n)= \text{number of integers less than and coprime to } n \text{ (including } 1) $
+\lstinputlisting [language=c++] {code/phi.cpp}
+
+\section{Point}
+\lstinputlisting [language=c++] {code/point.cpp}
+
+\section{Convex Hull}
+\lstinputlisting [language=c++] {code/convex_hull.cpp}
+
+\section{Minimum Enclosing Disc}
+\lstinputlisting [language=c++] {code/min_disc.cpp}
+
+\section{Polynomial Solver}
+$ p(x)=\sum_{i=0}^{n} coef_i \cdot x^i $ \\
+Solve $ p(x)=0 $ recursively between successive mins and maxs
+\lstinputlisting [language=c++] {code/polynomial.cpp}
+
+\section{SAT Solver}
+$ n $: number of vars
+\lstinputlisting [language=c++] {code/sat.cpp}
+
+\section{Roman Numerals}
+\lstinputlisting [language=c++] {code/roman.cpp}
+
+\section{Pick's Theorem}
+給定座標皆為整數點的簡單多邊形，設其面積為$ S $，內部整數點個數為$ a $，邊界上整數點個數為$ b $，則他們滿足$ S=a+\frac{b}{2}-1 $
+
+\section{Grey Code}
+The $ i \text{th grey code is } i \oplus (i>>1) $
+
+\newpage
+\part{String}
+
+\section{KMP}
+\lstinputlisting [language=c++] {code/kmp.cpp}
+
+\section{Z-algorithm}
+$ z_i $ is the length of the longest substring starting from $ s_i $ which is also a prefix of $ s $.
+\lstinputlisting [language=c++] {code/z_algo.cpp}
+
+\section{Suffix Array}
+$ sar_i $ is the index of sorted suffices \\
+$ rk_i $ is the rank of suffix starting from $ s_i $
+\lstinputlisting [language=c++] {code/suffix_array.cpp}
+
+\section{AC Trie}
+\lstinputlisting [language=c++] {code/ac_trie.cpp}
+
+\section{Longest Palindromic Substring}
+$ s $ should be preprocessed to the form $ |a|b|c|c|b|a| $\\
+$ p_i $ is the length of  LPS with center $ i $\\
+\lstinputlisting [language=c++] {code/lps.cpp}
+
+\newpage
+\part{Graph}
+
+\section{Bron-Kerbosch Algorithm}
+Find all maximum cliques and store them to $ c $ \\
+$ e $ is the adjacency matrix \\
+$ R \text{ and } X $ are initially empty while $ P $ is full \\
+Runs in $ O(3^{n/3}) $
+\lstinputlisting [language=c++] {code/bron_kerbosch.cpp}
+
+\section{Bridge and Cut}
+\lstinputlisting [language=c++] {code/bridge_cut.cpp}
+
+\section{Dinic's Algorithm}
+Runs in $ O(V^2E) $ in general, and $ O(V\sqrt{E}) $ for unit network
+\lstinputlisting [language=c++] {code/dinic.cpp}
+
+\section{Hopcroft–Karp Algorithm}
+Find out maximum cardinality matching of a bipartite graph in $ O(V\sqrt{E}) $
+\lstinputlisting [language=c++] {code/hk.cpp}
+
+\section{Minimum-cost Flow}
+Find out min-cost flow in $ O(maxf \cdot V^2) $
+\lstinputlisting [language=c++] {code/cost_flow.cpp}
+
+\section{Bellman-Ford Algorithm}
+Collection of $ O(VE) $ weighted directed graph algorithms including SSSP, negative cycle detection, minimum mean cycle.
+\lstinputlisting [language=c++] {code/bellman_ford.cpp}
+
+\newpage
+\part{Data Structure}
+
+\section{Treap}
+\lstinputlisting [language=c++] {code/treap.cpp}
+
+\section{2D Binary Indexed Tree}
+\lstinputlisting [language=c++] {code/2d_bit.cpp}
+
+\section{Subset Sum}
+$ O((\sum a_i)^{1.5}) $
+\lstinputlisting [language=c++] {code/subsetsum.cpp}
+
+\section{Sparse Table}
+\lstinputlisting [language=c++] {code/sparse.cpp}
+
+\end {document}
