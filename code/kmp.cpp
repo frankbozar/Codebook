@@ -13,7 +13,7 @@ vector<int> KMP(char* s, char* t){//search for s in t
 		if( k==-1 ) i++, k=0;
 		else if( t[i]==s[k] ){
 			i++, k++;
-            if(k==m){
+			if(k==m){
 				result.push_back(i-m);
 				k=f[k];
 			}

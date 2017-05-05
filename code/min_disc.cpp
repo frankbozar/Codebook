@@ -1,16 +1,12 @@
 struct circle{
-	point c;
-	double r;
+	point c; double r;
 	circle(const point& _c, double _r) : c(_c), r(_r){}
 	circle(const point& p, const point& q) : c((p+q)*0.5), r((c-p)()*(c-p)()){}
 	circle(const point& A, const point& B, const point& C){
 		point a=B-A, b=C-A;
-		double c1=a()*a()*0.5, c2=b()*b()*0.5;
-		double d=a^b;
-		double x=A.x+(c1*b.y-c2*a.y)/d;
-		double y=A.y+(a.x*c2-b.x*c1)/d;
-		c=point(x, y);
-		r=(c-A)()*(c-A)();
+		double c1=a()*a()*0.5, c2=b()*b()*0.5, d=a^b;
+		double x=A.x+(c1*b.y-c2*a.y)/d, y=A.y+(a.x*c2-b.x*c1)/d;
+		c=point(x, y); r=(c-A)()*(c-A)();
 	}
 	bool in(const point& p) const{
 		return (p-c)()*(p-c)()<=r+EPS;

@@ -8,7 +8,7 @@ struct treap{
 	}
 	static void push(node* p){}
 	static void pull(node* p){}
-    static node* merge(node* l, node* r, node* p=NULL){//if merge to root
+	static node* merge(node* l, node* r, node* p=NULL){//if merge to root
 		if( l==NULL ){
 			set_parent(r, p); return r;
 		}

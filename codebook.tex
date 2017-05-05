@@ -74,6 +74,12 @@
 \newpage
 \part{Math}
 
+\section{Pick's Theorem}
+給定座標皆為整數點的簡單多邊形，設其面積為$ S $，內部整數點個數為$ a $，邊界上整數點個數為$ b $，則他們滿足$ S=a+\frac{b}{2}-1 $
+
+\section{Grey Code}
+The $ i \text{th grey code is } i \oplus (i>>1) $
+
 \section{Extended Euclidean}
 Find $ x, \, y \text{ s.t. } ax+by=gcd(a, \, b) $
 \lstinputlisting [language=c++] {code/ext_gcd.cpp}
@@ -86,8 +92,9 @@ Find $ x \text{ s.t. } ax \equiv b(mod \, n) $
 Find $ x \text{ s.t. } x \equiv a_i(mod \, m_i) $
 \lstinputlisting [language=c++] {code/crt.cpp}
 
-\section{Miller–Rabin Primality Test}
-\lstinputlisting [language=c++] {code/miller_rabin.cpp}
+\section{Determinant}
+$ n $: number of vars
+\lstinputlisting [language=c++] {code/determinant.cpp}
 
 \section{Rho Algorithm for Factorization}
 Find a non-trivial divisor of composite $ n $ in $ O(\sqrt[4]{n}) $
@@ -96,7 +103,7 @@ Find a non-trivial divisor of composite $ n $ in $ O(\sqrt[4]{n}) $
 \section{Rho Algorithm for Logarithm}
 Let $ a $ be a generator of $ Z_{p}^{*} $, find $ \log_{a}{b} mod n $ in $ O(\sqrt{n}) $
 
-\section{Mobius Function}
+\section{Möbius Function}
 \[\mu (n) =
  	\begin{cases}
 		0	& \, \text{if } \exists \, p^2 \mid n \\
@@ -123,6 +130,9 @@ then
 $ \phi(n)= \text{number of integers less than and coprime to } n \text{ (including } 1) $
 \lstinputlisting [language=c++] {code/phi.cpp}
 
+\section{Miller–Rabin Primality Test}
+\lstinputlisting [language=c++] {code/miller_rabin.cpp}
+
 \section{Point}
 \lstinputlisting [language=c++] {code/point.cpp}
 
@@ -132,23 +142,23 @@ $ \phi(n)= \text{number of integers less than and coprime to } n \text{ (includi
 \section{Minimum Enclosing Disc}
 \lstinputlisting [language=c++] {code/min_disc.cpp}
 
-\section{Polynomial Solver}
-$ p(x)=\sum_{i=0}^{n} coef_i \cdot x^i $ \\
-Solve $ p(x)=0 $ recursively between successive mins and maxs
-\lstinputlisting [language=c++] {code/polynomial.cpp}
+\section{2-SAT}
+$ n $: number of vars
+\lstinputlisting [language=c++] {code/sat2.cpp}
 
 \section{SAT Solver}
 $ n $: number of vars
 \lstinputlisting [language=c++] {code/sat.cpp}
 
+\section{Polynomial Solver}
+$ p(x)=\sum_{i=0}^{n} coef_i \cdot x^i $ \\
+Solve $ p(x)=0 $ recursively between successive mins and maxs
+\lstinputlisting [language=c++] {code/polynomial.cpp}
+
+\vfill\null
+
 \section{Roman Numerals}
 \lstinputlisting [language=c++] {code/roman.cpp}
-
-\section{Pick's Theorem}
-給定座標皆為整數點的簡單多邊形，設其面積為$ S $，內部整數點個數為$ a $，邊界上整數點個數為$ b $，則他們滿足$ S=a+\frac{b}{2}-1 $
-
-\section{Grey Code}
-The $ i \text{th grey code is } i \oplus (i>>1) $
 
 \newpage
 \part{String}
@@ -158,15 +168,19 @@ The $ i \text{th grey code is } i \oplus (i>>1) $
 
 \section{Z-algorithm}
 $ z_i $ is the length of the longest substring starting from $ s_i $ which is also a prefix of $ s $.
-\lstinputlisting [language=c++] {code/z_algo.cpp}
+\lstinputlisting [language=c++] {code/z.cpp}
+
+\section{AC Trie}
+\lstinputlisting [language=c++] {code/ac_trie.cpp}
+
+\vfill\null
 
 \section{Suffix Array}
 $ sar_i $ is the index of sorted suffices \\
 $ rk_i $ is the rank of suffix starting from $ s_i $
 \lstinputlisting [language=c++] {code/suffix_array.cpp}
 
-\section{AC Trie}
-\lstinputlisting [language=c++] {code/ac_trie.cpp}
+\vfill\null
 
 \section{Longest Palindromic Substring}
 $ s $ should be preprocessed to the form $ |a|b|c|c|b|a| $\\
@@ -176,15 +190,19 @@ $ p_i $ is the length of  LPS with center $ i $\\
 \newpage
 \part{Graph}
 
-\section{Bron-Kerbosch Algorithm}
-Find all maximum cliques and store them to $ c $ \\
-$ e $ is the adjacency matrix \\
-$ R \text{ and } X $ are initially empty while $ P $ is full \\
-Runs in $ O(3^{n/3}) $
-\lstinputlisting [language=c++] {code/bron_kerbosch.cpp}
+\section{Biconnected Connected}
+Tarjan's Algorithm in undirected graph
+\lstinputlisting [language=c++] {code/bcc.cpp}
 
-\section{Bridge and Cut}
-\lstinputlisting [language=c++] {code/bridge_cut.cpp}
+\section{Strongly Connected Component}
+Tarjan's Algorithm in directed graph
+\lstinputlisting [language=c++] {code/scc.cpp}
+
+\section{Bellman-Ford Algorithm}
+Collection of $ O(VE) $ weighted directed graph algorithms including SSSP, negative cycle detection, minimum mean cycle.
+\lstinputlisting [language=c++] {code/bellman_ford.cpp}
+
+\vfill\null
 
 \section{Dinic's Algorithm}
 Runs in $ O(V^2E) $ in general, and $ O(V\sqrt{E}) $ for unit network
@@ -192,15 +210,24 @@ Runs in $ O(V^2E) $ in general, and $ O(V\sqrt{E}) $ for unit network
 
 \section{Hopcroft–Karp Algorithm}
 Find out maximum cardinality matching of a bipartite graph in $ O(V\sqrt{E}) $
-\lstinputlisting [language=c++] {code/hk.cpp}
+\lstinputlisting [language=c++] {code/hopcroft_karp.cpp}
 
 \section{Minimum-cost Flow}
 Find out min-cost flow in $ O(maxf \cdot V^2) $
 \lstinputlisting [language=c++] {code/cost_flow.cpp}
 
-\section{Bellman-Ford Algorithm}
-Collection of $ O(VE) $ weighted directed graph algorithms including SSSP, negative cycle detection, minimum mean cycle.
-\lstinputlisting [language=c++] {code/bellman_ford.cpp}
+\section{Least Common Ancestor}
+
+\lstinputlisting [language=c++] {code/lca.cpp}
+
+\vfill\null
+
+\section{Bron-Kerbosch Algorithm}
+Find all maximum cliques and store them to $ c $ \\
+$ e $ is the adjacency matrix \\
+$ R \text{ and } X $ are initially empty while $ P $ is full \\
+Runs in $ O(3^{n/3}) $
+\lstinputlisting [language=c++] {code/bron_kerbosch.cpp}
 
 \newpage
 \part{Data Structure}
@@ -209,13 +236,16 @@ Collection of $ O(VE) $ weighted directed graph algorithms including SSSP, negat
 \lstinputlisting [language=c++] {code/treap.cpp}
 
 \section{2D Binary Indexed Tree}
-\lstinputlisting [language=c++] {code/2d_bit.cpp}
+\lstinputlisting [language=c++] {code/bit.cpp}
+
+\section{Sparse Table}
+\lstinputlisting [language=c++] {code/sparse_table.cpp}
 
 \section{Subset Sum}
 $ O((\sum a_i)^{1.5}) $
 \lstinputlisting [language=c++] {code/subsetsum.cpp}
 
-\section{Sparse Table}
-\lstinputlisting [language=c++] {code/sparse.cpp}
+\section{Built-in Functions Provided by GCC}
+\lstinputlisting [language=c++] {code/builtin.cpp}
 
 \end {document}

@@ -8,10 +8,10 @@ void tarjan_bcc(int u, int p=-1, int d=0){
 		if( v!=p && dfn[v]>0 ) low[u]=min(low[u], dfn[v]);
 		else if( dfn[v]==0 ){
 			cnt++;
-            tarjan_bcc(v, u, d);
+			tarjan_bcc(v, u, d);
 			low[u]=min(low[u], low[v]);
 			if( d<low[v] ) brg.push_back(pair<int, int>(u, v));
-            if( (p<0 && cnt>1) || (p>=0 && d<=low[v]) ) cut[u]=true;
+			if( (p<0 && cnt>1) || (p>=0 && d<=low[v]) ) cut[u]=true;
 		}
 	}
 }
