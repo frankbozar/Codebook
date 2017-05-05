@@ -1,69 +1,38 @@
 struct suffixarray{
-	char s[N];
-	int rk[2][N], id[2][N], n, p, cnt[N], len[N], od[N], sar[N];
-	struct comp{
-		char *s;
-		bool operator()(int i, int j) const{
-			return s[i]<s[j];
-		}
-	} cmp;
-	suffixarray(){
-		scanf("%s", s);
-		cmp.s=s;
-		n=strlen(s), p=0;
-		sa(); lcp();
-    }
-	int sr(int i, int t) const{//rank of shifted position
-		return i+t<n ? rk[p][i+t] : -1 ;
-	}
-	bool check_same(int i, int j, int t) const{
-		return rk[p][i]==rk[p][j] && sr(i,t)==sr(j,t) ;
-	}
-	void sa(){//length of array s
-		memset(cnt, 0, sizeof(cnt));
-		for(int i=0; i<n; i++){
-			id[p][i]=i;
-			rk[p][i]=s[i];
-			cnt[ s[i] ]++;
-		}
-		for(int i=1; i<128; i++) cnt[i]+=cnt[i-1];
-		sort(id[p], id[p]+n, cmp);
-		for(int t=1; t<n; t<<=1){//least significant bit is already sorted
-			for(int i=n-1;i>=0;i--){
-				int now=id[p][i]-t;
-				if( now>=0 ) id[p^1][ --cnt[ rk[p][now] ] ]=now;
+    char s[N];
+    int n, sa[N], r[N], lcp[N], sa2[N], r2[N], c[N], a;
+    void init(const char* _s){
+        memset(this, 0, sizeof(suffixarray));
+        n=strlen(_s), a=128;
+        memcpy(s, _s, sizeof(char)*n);
+        for(int i=0; i<n; i++) c[ r[i]=s[i] ]++;
+        for(int i=1; i<a; i++) c[i]+=c[i-1];
+        for(int i=n-1; i>=0; i--) sa[ --c[ r[i] ] ]=i;
+        for(int l=1; l<n; l<<=1){
+            int p=0;
+            for(int i=n-l; i<n; i++) sa2[p++]=i;
+            for(int i=0; i<n; i++) if( sa[i]-l>=0 ) sa2[p++]=sa[i]-l;
+            for(int i=0; i<a; i++) c[i]=0;
+            for(int i=0; i<n; i++) c[ r[i] ]++;
+            for(int i=1; i<a; i++) c[i]+=c[i-1];
+            for(int i=n-1; i>=0; i--) sa[ --c[ r[ sa2[i] ] ] ]=sa2[i];
+            r2[ sa[0] ]=0;
+            for (int i=1; i<n; i++){
+                r2[ sa[i] ]=r2[ sa[i-1] ]+1;
+                if( r[ sa[i-1] ]==r[ sa[i] ] && sa[i-1]+l<n && r[ sa[i-1]+l ]==r[ sa[i]+l ] ) r2[sa[i]]--;
             }
-			for(int i=n-t; i<n; i++)
-				id[p^1][ --cnt[ rk[p][i] ] ]=i;
-			memset(cnt, 0, sizeof(cnt));
-			int now=id[p^1][0];
-            rk[p^1][now]=0;
-            cnt[0]++;
-			for(int i=1; i<n; i++){
-				int pre=now;
-				now=id[p^1][i];
-				if( check_same(pre,now,t) )
-					rk[p^1][now]=rk[p^1][pre];
-				else
-					rk[p^1][now]=rk[p^1][pre]+1;
-				cnt[ rk[p^1][now] ]++;
-			}
-			p^=1;
-			if(rk[p][now]==n-1) break;
-			for(int i=1; i<n; i++) cnt[i]+=cnt[i-1];
-		}
-		memcpy(sar, id[p], sizeof(sar));
-	}
-	void lcp(){
-        for(int i=0; i<n; i++) od[ sar[i] ]=i;
-        for(int l=0, i=0; i<n; i++){
-			l=!i ? 0 : len[ od[i-1] ] ? len[ od[i-1] ]-1 : 0 ;
-			if( od[i] ){
-				int pre=sar[ od[i]-1 ];
-				while( pre+l<n && i+l<n && s[pre+l]==s[i+l] ) l++;
-				len[ od[i] ]=l;
-			}
-			else len[0]=0;
-		}
-	}
-};
+            for(int i=0; i<n; i++) swap(r[i], r2[i]);
+            a=r[ sa[n-1] ]+1;
+            if( a==n ) break;
+        }
+        for(int i=0; i<n; i++) r[ sa[i] ]=i;
+        for(int k=0, i=0; i<n; i++, k=max(0, k-1)){
+            if( r[i]==n-1 ){
+                lcp[ r[i] ]=k=0;
+                continue;
+            }
+            for(int j=sa[ r[i]+1 ]; max(i, j)+k<n && s[i+k]==s[j+k]; k++);
+            lcp[ r[i] ]=k;
+        }
+    }
+} SA;

@@ -2,8 +2,8 @@ struct HK{
 	int n, m;
 	vector<int> d, p;
 	vector<vector<int>> e;
-	HK(const int _n, const int _m) : n(_n), m(_m), e(n+m+1){}
-	void add_edge(int u, int v){
+	HK(int _n, int _m) : n(_n), m(_m), e(n+m+1){}
+	void add(int u, int v){//one base index: [1, u]*[1, v]
 		e[u].push_back(n+v);
 		e[n+v].push_back(u);
 	}
@@ -28,7 +28,7 @@ struct HK{
 	}
 	bool dfs(int u){
 		if( u==0 ) return true;
-		for(auto v : e[u])
+		for(int v : e[u])
 			if( d[ p[v] ]==d[u]+1 && dfs(p[v]) ){
 				p[v]=u, p[u]=v;
 				return true;

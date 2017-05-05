@@ -6,7 +6,7 @@ struct Dinic{
 	vector<int> l;
 	vector<vector<edge>> e;
 	Dinic(int n) : e(n+1){}
-	void addEdge(int u, int v, int w){//directed
+	void add(int u, int v, int w){//directed
 		e[u].push_back(edge(v, w, e[v].size()));
 		e[v].push_back(edge(u, 0, e[u].size()-1));
 	}
@@ -27,21 +27,21 @@ struct Dinic{
 		}
 		return l[t]<INF;
 	}
-	int dfs(int s, int t, int num){
+	int dfs(int s, int t, int num=INF){
 		if( s==t || num==0 ) return num;
 		int ans=0;
 		for(edge& E : e[s])
 			if( E.c>0 && l[s]+1==l[E.t] ){
-				int flow=dfs(E.t, t, min(num, E.c));
-				rev(E).c+=flow, ans+=flow;
-				E.c-=flow, num-=flow;
+				int tmp=dfs(E.t, t, min(num, E.c));
+				rev(E).c+=tmp, ans+=tmp;
+				E.c-=tmp, num-=tmp;
 			}
 		return ans>0 ? ans : l[s]=0;
 	}
 	int operator()(int s, int t){
 		int ans=0, tmp=0;
 		while( bfs(s, t) )
-			while( (tmp=dfs(s, t, INF)) )
+			while( (tmp=dfs(s, t)) )
 				ans+=tmp;
 		return ans;
 	}
