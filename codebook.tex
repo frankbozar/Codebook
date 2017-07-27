@@ -208,11 +208,11 @@ Collection of $ O(VE) $ weighted directed graph algorithms including SSSP, negat
 \vfill\null
 
 \section{Dinic's Algorithm}
-Runs in $ O(V^2E) $ in general, and $ O(V\sqrt{E}) $ for unit network
+Runs in $ O(V^2E) $ in general, and $ O(min(V^{2/3}E,\, E^{3/2})) $ for unit network
 \lstinputlisting [language=c++] {code/dinic.cpp}
 
 \section{Hopcroft–Karp Algorithm}
-Find out maximum cardinality matching of a bipartite graph in $ O(V\sqrt{E}) $
+Find out maximum cardinality matching of a bipartite graph in $ O(\sqrt{V}E) $
 \lstinputlisting [language=c++] {code/hopcroft_karp.cpp}
 
 \section{Minimum-cost Flow}
@@ -226,7 +226,7 @@ Find out min-cost flow in $ O(maxf \cdot V^2) $
 \vfill\null
 
 \section{Bron-Kerbosch Algorithm}
-Find all maximum cliques and store them to $ c $ \\
+Find all maximal cliques and store them to $ c $ \\
 $ e $ is the adjacency matrix \\
 $ R \text{ and } X $ are initially empty while $ P $ is full \\
 Runs in $ O(3^{n/3}) $
