@@ -1,4 +1,3 @@
-#include<cmath>
 struct point{
 	double x,y;
 	point(double _x=0, double _y=0) : x(_x), y(_y){}
