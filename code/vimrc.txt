@@ -1,33 +1,33 @@
-" system
-set nocompatible					" safty option
-set printoptions=number:y			" print with line number
-set autoread						" reload file when modified
+" system "
+set nocompatible										" safty option "
+set printoptions=number:y						" print with line number "
+set autoread												" reload file when modified "
 
-" tabs and indents
-set tabstop=4						" number of visual spaces per TAB
-set softtabstop=4					" number of spaces in tab when editing
-set shiftwidth=4					" number of spaces of indent
-set smartindent						" autoindent
-set smarttab						" autoindent
-filetype plugin indent on			" load filetype-specific indent files
+" tabs and indents "
+set tabstop=4												" number of visual spaces per TAB "
+set softtabstop=4										" number of spaces in tab when editing "
+set shiftwidth=4										" number of spaces of indent "
+set smartindent											" autoindent "
+set smarttab												" autoindent "
+filetype plugin indent on						" load filetype-specific indent files "
 
-" appearance
-syntax on							" syntax hilight
-set ruler							" show line and column number 
-set number							" line number
-set showcmd							" show commands
-set showmatch						" blink matched brackets
-set cursorline						" hilight currsor line
-set cursorcolumn					" hilight currsor column
+" appearance "
+syntax on														" syntax hilight "
+set ruler														" show line and column number  "
+set number													" line number "
+set showcmd													" show commands "
+set showmatch												" blink matched brackets "
+set cursorline											" hilight currsor line "
+set cursorcolumn										" hilight currsor column "
 highlight CursorLine ctermbg=235
 highlight CursorColumn ctermbg=235
-set background=dark					" background color
+set background=dark									" background color "
 
-" search
-set incsearch						" search as charcaters entered
-set hlsearch						" hilight matches
+" search "
+set incsearch												" search as charcaters entered "
+set hlsearch												" hilight matches "
 
-" shortcut
+" shortcut "
 map Z gg=G
 set backspace=indent,eol,start
 set whichwrap=b,s,<,>,[,]
