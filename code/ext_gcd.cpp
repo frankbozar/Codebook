@@ -1,4 +1,4 @@
-lld ext_gcd(lld a, lld b, lld& x, lld& y){
+lld ext_gcd(lld a, lld b, lld& x, lld& y){
 	if( b==0 ){
 		x=1, y=0;
 		return a;
