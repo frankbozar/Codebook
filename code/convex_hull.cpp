@@ -1,5 +1,5 @@
-vector<point> convex_hull(vector<point> P){
-	int n=P.size(), k=0;
+vector<point> convex_hull(vector<point> p){
+	int n=p.size(), k=0;
 	vector<point> h(n<<1);
 	sort(p.begin(), p.end());
 	for (int i=0; i<n; i++){
