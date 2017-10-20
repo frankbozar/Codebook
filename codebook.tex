@@ -64,10 +64,13 @@
 
 \begin {document}
 \thispagestyle{fancy}
-{ \Huge National Chiao Tung University \\ Team Reference Document}
+{ \Huge National Chiao Tung University \\ Foudre Reference Document}
 \tableofcontents
 
-\newpage
+~\newline
+~\newline
+~\newline
+
 \lstinputlisting [language=sh] {code/vimrc.txt}
 \#pragma GCC optimize (2)
 
@@ -152,6 +155,14 @@ $ n $: constraints, $ m $: variables
 \section{Minimum Enclosing Disc}
 \lstinputlisting [language=c++] {code/min_disc.cpp}
 
+\section{Fast Fourier Transform}
+\lstinputlisting [language=c++] {code/fft.cpp}
+
+\section{Polynomial Solver}
+$ p(x)=\sum_{i=0}^{n} coef_i \cdot x^i $ \\
+Solve $ p(x)=0 $ recursively between successive mins and maxs
+\lstinputlisting [language=c++] {code/polynomial.cpp}
+
 \section{2-SAT}
 $ n $: number of vars
 \lstinputlisting [language=c++] {code/sat2.cpp}
@@ -159,13 +170,6 @@ $ n $: number of vars
 \section{SAT Solver}
 $ n $: number of vars
 \lstinputlisting [language=c++] {code/sat.cpp}
-
-\section{Polynomial Solver}
-$ p(x)=\sum_{i=0}^{n} coef_i \cdot x^i $ \\
-Solve $ p(x)=0 $ recursively between successive mins and maxs
-\lstinputlisting [language=c++] {code/polynomial.cpp}
-
-\vfill\null
 
 \section{Roman Numerals}
 \lstinputlisting [language=c++] {code/roman.cpp}
@@ -229,6 +233,9 @@ Find out maximum cardinality matching of a bipartite graph in $ O(\sqrt{V}E) $
 \section{Minimum-cost Flow}
 Find out min-cost flow in $ O(maxf \cdot V^2) $
 \lstinputlisting [language=c++] {code/cost_flow.cpp}
+
+\section{Minimum Weighted Perfect Matching on General Graph}
+\lstinputlisting [language=c++] {code/Minimum_General_Weighted_Matching.cpp}
 
 \section{Least Common Ancestor}
 
