@@ -1,5 +1,5 @@
 " system
-set nocompatible					" safty option
+set nocompatible								" safty option
 set printoptions=number:y			" print with line number
 set autoread						" reload file when modified
 

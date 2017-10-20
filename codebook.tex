@@ -85,23 +85,27 @@ Find $ x, \, y \text{ s.t. } ax+by=gcd(a, \, b) $
 \lstinputlisting [language=c++] {code/ext_gcd.cpp}
 
 \section{Mod Equation}
-Find $ x \text{ s.t. } ax \equiv b(mod \, n) $
+Find $ x \text{ s.t. } ax \equiv b \, mod \, n $
 \lstinputlisting [language=c++] {code/mod_eq.cpp}
 
 \section{Chinese Remainder Theorem}
-Find $ x \text{ s.t. } x \equiv a_i(mod \, m_i) $
+Find $ x \text{ s.t. } x \equiv a_i \, mod \, m_i $
 \lstinputlisting [language=c++] {code/crt.cpp}
 
-\section{Determinant}
-$ n $: number of vars
-\lstinputlisting [language=c++] {code/determinant.cpp}
+\section{Quadratic residue}
+Find $ x \text{ s.t. } x^2 \equiv a \, mod \, p) $
+
+\section{Discrete Logarithm}
+Let $ gcd(a, n)=1 $, find $ \log_{a}{b} \, mod \, n $ in $ O(\sqrt{n}) $
+\lstinputlisting [language=c++] {code/baby_giant.cpp}
 
 \section{Rho Algorithm for Factorization}
 Find a non-trivial divisor of composite $ n $ in $ O(\sqrt[4]{n}) $
 \lstinputlisting [language=c++] {code/rho_fact.cpp}
 
-\section{Rho Algorithm for Logarithm}
-Let $ a $ be a generator of $ Z_{p}^{*} $, find $ \log_{a}{b} mod \, n $ in $ O(\sqrt{n}) $
+\section{Phi Function}
+$ \phi(n)= \text{number of integers less than and coprime to } n \text{ (including } 1) $
+\lstinputlisting [language=c++] {code/phi.cpp}
 
 \section{Möbius Function}
 \[\mu (n) =
@@ -126,12 +130,18 @@ then
 \]
 \lstinputlisting [language=c++] {code/mobius.cpp}
 
-\section{Phi Function}
-$ \phi(n)= \text{number of integers less than and coprime to } n \text{ (including } 1) $
-\lstinputlisting [language=c++] {code/phi.cpp}
-
 \section{Miller–Rabin Primality Test}
 \lstinputlisting [language=c++] {code/miller_rabin.cpp}
+
+\section{Determinant}
+$ n $: number of vars
+\lstinputlisting [language=c++] {code/determinant.cpp}
+
+\section{Simplex}
+0-based index \\
+Find $ \max\{cx\} $ subjected to $ ax \leq b \, \wedge \, x \geq 0 $ \\
+$ n $: constraints, $ m $: variables
+\lstinputlisting [language=c++] {code/simplex.cpp}
 
 \section{Point}
 \lstinputlisting [language=c++] {code/point.cpp}
@@ -253,3 +263,4 @@ $ O((\sum a_i)^{1.5}) $
 \lstinputlisting [language=c++] {code/builtin.cpp}
 
 \end {document}
+
