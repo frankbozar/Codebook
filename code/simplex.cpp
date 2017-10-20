@@ -1,7 +1,7 @@
 const double eps = 1E-10;
 double a[maxn][maxm], b[maxn], c[maxm], d[maxn][maxm], x[maxm];
 int ix[maxn + maxm];
-double simplex(double a[maxn][maxm], double b[maxn], double c[maxm], int n, int m) {
+double simplex(int n, int m){
 	++m;
 	int r = n, s = m - 1;
 	memset(d, 0, sizeof(d));
@@ -27,7 +27,7 @@ double simplex(double a[maxn][maxm], double b[maxn], double c[maxm], int n, int 
 		}
 		r = -1; s = -1;
 		for (int j = 0; j < m; ++j) if (s < 0 || ix[s] > ix[j])
-				if (d[n + 1][j] > eps || (d[n + 1][j] > -eps && d[n][j] > eps)) s = j;
+				if(d[n + 1][j] > eps || (d[n + 1][j] > -eps && d[n][j] > eps)) s = j;
 		if (s < 0) break;
 		for (int i=0; i<n; ++i) if (d[i][s] < -eps)
 			if (r < 0 || (dd = d[r][m] / d[r][s] - d[i][m] / d[i][s]) < -eps || (dd < eps && ix[r + m] > ix[i + m])) r = i;

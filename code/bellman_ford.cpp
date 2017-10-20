@@ -29,9 +29,8 @@ struct BF{
 		double ans=INF;
 		vector<vector<int>> d(n+1, vector<int>(n, INF));
 		d[0].assign(n, 0);
-		for(int i=1; i<=n; i++)
-			for(const edge& E : e)
-				d[i][E.v]=min(d[i][E.v], d[i-1][E.u]+E.w);
+		for(int i=1; i<=n; i++) for(const edge& E : e)
+			d[i][E.v]=min(d[i][E.v], d[i-1][E.u]+E.w);
 		for(int i=0; i<n; i++){
 			double tmp=-INF;
 			if( d[n][i]>=INF ) continue;

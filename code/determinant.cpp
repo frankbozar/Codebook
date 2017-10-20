@@ -1,5 +1,3 @@
-//pmd(lld x, lld p, lld m): return x^p mod m
-//inv(lld x, lld m): return x^(-1) mod m
 lld det(int n, lld m, vector<vector<lld>> a){
 	lld div=1;
 	for(int k=n-1; k>0; k--){

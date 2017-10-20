@@ -97,7 +97,7 @@ Find $ x \text{ s.t. } ax \equiv b \, mod \, n $
 \lstinputlisting [language=c++] {code/mod_eq.cpp}
 
 \section{Quadratic residue}
-Find $ x \text{ s.t. } x^2 \equiv a \, mod \, p) $
+Find $ x \text{ s.t. } x^2 \equiv a \, mod \, p $
 \lstinputlisting [language=c++]{code/quadratic_residue.cpp}
 
 \section{Rho Algorithm for Factorization}
@@ -105,7 +105,7 @@ Find a non-trivial divisor of composite $ n $ in $ O(\sqrt[4]{n}) $
 \lstinputlisting [language=c++] {code/rho_fact.cpp}
 
 \section{Discrete Logarithm}
-Let $ gcd(a, n)=1 $, find $ \log_{a}{b} \, mod \, n $ in $ O(\sqrt{n}) $
+Let $ gcd(a, n)=1 $, find $ \log_{a}{b} \, mod \, n $ in $ O(\sqrt{n}\log{n}) $
 \lstinputlisting [language=c++] {code/baby_giant.cpp}
 
 \section{Möbius Function}
@@ -147,7 +147,6 @@ $ n $: constraints, $ m $: variables
 \lstinputlisting [language=c++] {code/simplex.cpp}
 
 \section{Determinant}
-$ n $: number of vars
 \lstinputlisting [language=c++] {code/determinant.cpp}
 
 \section{Fast Fourier Transform}
@@ -215,7 +214,7 @@ $ rk_i $ is the rank of suffix starting from $ s_i $
 \newpage
 \part{Graph}
 
-\section{Biconnected Connected}
+\section{Biconnected Connected Component}
 Tarjan's Algorithm in undirected graph
 \lstinputlisting [language=c++] {code/bcc.cpp}
 
@@ -229,33 +228,47 @@ Collection of $ O(VE) $ weighted directed graph algorithms including SSSP, negat
 
 \vfill\null
 
-\section{Dinic's Algorithm}
+\section{Maximum Flow}
 Runs in $ O(V^2E) $ in general, and $ O(min(V^{2/3}E,\, E^{3/2})) $ for unit network
 \lstinputlisting [language=c++] {code/dinic.cpp}
 
-\section{Hopcroft–Karp Algorithm}
-Find out maximum cardinality matching of a bipartite graph in $ O(\sqrt{V}E) $
-\lstinputlisting [language=c++] {code/hopcroft_karp.cpp}
-
-\section{Minimum-cost Flow}
-Find out min-cost flow in $ O(maxf \cdot V^2) $
+\section{Minimum-Cost Maximum Flow}
+$ O(maxf \cdot V^2) $
 \lstinputlisting [language=c++] {code/cost_flow.cpp}
 
-\section{Min-weight Perfect Matching on General Graph}
-\lstinputlisting [language=c++] {code/Minimum_General_Weighted_Matching.cpp}
-
-\section{Least Common Ancestor}
-
-\lstinputlisting [language=c++] {code/lca.cpp}
+\section{Maximum-Weight Bipartite Perfect Matching}
+$ O(V^3) $
+\lstinputlisting [language=c++] {code/km.cpp}
 
 \vfill\null
+
+\section{Maximum-Cardinality Bipartite Matching}
+$ O(\sqrt{V}E) $
+\lstinputlisting [language=c++] {code/hopcroft_karp.cpp}
+
+\vfill\null
+
+\section{Minimum-Weight General Perfect Matching}
+$ O(V^2E) $
+\lstinputlisting [language=c++] {code/Minimum_General_Weighted_Matching.cpp}
+
+\vfill\null
+
+\section{Maximum-Cardinality General Matching}
+$ O(\sqrt{V}E) $
+\lstinputlisting [language=c++] {code/blossom.cpp}
 
 \section{Bron-Kerbosch Algorithm}
 Find all maximal cliques and store them to $ c $ \\
 $ e $ is the adjacency matrix \\
 $ R \text{ and } X $ are initially empty while $ P $ is full \\
-Runs in $ O(3^{n/3}) $
+Runs in $ O(3^{V/3}) $
 \lstinputlisting [language=c++] {code/bron_kerbosch.cpp}
+
+\vfill\null
+
+\section{Least Common Ancestor}
+\lstinputlisting [language=c++] {code/lca.cpp}
 
 \newpage
 \part{Data Structure and Others}
