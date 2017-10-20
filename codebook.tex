@@ -107,10 +107,6 @@ Find a non-trivial divisor of composite $ n $ in $ O(\sqrt[4]{n}) $
 Let $ gcd(a, n)=1 $, find $ \log_{a}{b} \, mod \, n $ in $ O(\sqrt{n}) $
 \lstinputlisting [language=c++] {code/baby_giant.cpp}
 
-\section{Phi Function}
-$ \phi(n)= \text{number of integers less than and coprime to } n \text{ (including } 1) $
-\lstinputlisting [language=c++] {code/phi.cpp}
-
 \section{Möbius Function}
 \[\mu (n) =
  	\begin{cases}
@@ -133,6 +129,11 @@ then
 	f(n)=\sum_{d \mid n}\mu(d)F(\frac{n}{d})
 \]
 \lstinputlisting [language=c++] {code/mobius.cpp}
+
+
+\section{Phi Function}
+$ \phi(n)= \text{number of integers less than and coprime to } n \text{ (including } 1) $
+\lstinputlisting [language=c++] {code/phi.cpp}
 
 \section{Miller–Rabin Primality Test}
 \lstinputlisting [language=c++] {code/miller_rabin.cpp}
@@ -271,4 +272,3 @@ $ O((\sum a_i)^{1.5}) $
 \lstinputlisting [language=c++] {code/builtin.cpp}
 
 \end {document}
-
