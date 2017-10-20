@@ -87,25 +87,25 @@ The $ i \text{th grey code is } i \oplus (i>>1) $
 Find $ x, \, y \text{ s.t. } ax+by=gcd(a, \, b) $
 \lstinputlisting [language=c++] {code/ext_gcd.cpp}
 
-\section{Mod Equation}
-Find $ x \text{ s.t. } ax \equiv b \, mod \, n $
-\lstinputlisting [language=c++] {code/mod_eq.cpp}
-
 \section{Chinese Remainder Theorem}
 Find $ x \text{ s.t. } x \equiv a_i \, mod \, m_i $
 \lstinputlisting [language=c++] {code/crt.cpp}
+
+\section{Mod Equation}
+Find $ x \text{ s.t. } ax \equiv b \, mod \, n $
+\lstinputlisting [language=c++] {code/mod_eq.cpp}
 
 \section{Quadratic residue}
 Find $ x \text{ s.t. } x^2 \equiv a \, mod \, p) $
 \lstinputlisting [language=c++]{code/quadratic_residue.cpp}
 
-\section{Discrete Logarithm}
-Let $ gcd(a, n)=1 $, find $ \log_{a}{b} \, mod \, n $ in $ O(\sqrt{n}) $
-\lstinputlisting [language=c++] {code/baby_giant.cpp}
-
 \section{Rho Algorithm for Factorization}
 Find a non-trivial divisor of composite $ n $ in $ O(\sqrt[4]{n}) $
 \lstinputlisting [language=c++] {code/rho_fact.cpp}
+
+\section{Discrete Logarithm}
+Let $ gcd(a, n)=1 $, find $ \log_{a}{b} \, mod \, n $ in $ O(\sqrt{n}) $
+\lstinputlisting [language=c++] {code/baby_giant.cpp}
 
 \section{Phi Function}
 $ \phi(n)= \text{number of integers less than and coprime to } n \text{ (including } 1) $
