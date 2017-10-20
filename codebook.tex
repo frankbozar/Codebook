@@ -64,7 +64,8 @@
 
 \begin {document}
 \thispagestyle{fancy}
-{ \Huge National Chiao Tung University \\ Foudre Reference Document}
+{ \Huge National Chiao Tung University \\
+Team Reference Document}
 \tableofcontents
 
 ~\newline
@@ -130,7 +131,6 @@ then
 \]
 \lstinputlisting [language=c++] {code/mobius.cpp}
 
-
 \section{Phi Function}
 $ \phi(n)= \text{number of integers less than and coprime to } n \text{ (including } 1) $
 \lstinputlisting [language=c++] {code/phi.cpp}
@@ -138,15 +138,37 @@ $ \phi(n)= \text{number of integers less than and coprime to } n \text{ (includi
 \section{Miller–Rabin Primality Test}
 \lstinputlisting [language=c++] {code/miller_rabin.cpp}
 
-\section{Determinant}
-$ n $: number of vars
-\lstinputlisting [language=c++] {code/determinant.cpp}
+\vfill\null
 
 \section{Simplex}
 0-based index \\
 Find $ \max\{cx\} $ subjected to $ ax \leq b \, \wedge \, x \geq 0 $ \\
 $ n $: constraints, $ m $: variables
 \lstinputlisting [language=c++] {code/simplex.cpp}
+
+\section{Determinant}
+$ n $: number of vars
+\lstinputlisting [language=c++] {code/determinant.cpp}
+
+\section{Fast Fourier Transform}
+\lstinputlisting [language=c++] {code/fft.cpp}
+
+\vfill\null
+
+\section{Polynomial Solver}
+$ p(x)=\sum_{i=0}^{n} coef_i \cdot x^i $ \\
+Solve $ p(x)=0 $ recursively between successive mins and maxs
+\lstinputlisting [language=c++] {code/polynomial.cpp}
+
+\vfill\null
+
+\section{2-SAT}
+$ n $: number of vars
+\lstinputlisting [language=c++] {code/sat2.cpp}
+
+\section{SAT Solver}
+$ n $: number of vars
+\lstinputlisting [language=c++] {code/sat.cpp}
 
 \section{Point}
 \lstinputlisting [language=c++] {code/point.cpp}
@@ -156,22 +178,6 @@ $ n $: constraints, $ m $: variables
 
 \section{Minimum Enclosing Disc}
 \lstinputlisting [language=c++] {code/min_disc.cpp}
-
-\section{Fast Fourier Transform}
-\lstinputlisting [language=c++] {code/fft.cpp}
-
-\section{Polynomial Solver}
-$ p(x)=\sum_{i=0}^{n} coef_i \cdot x^i $ \\
-Solve $ p(x)=0 $ recursively between successive mins and maxs
-\lstinputlisting [language=c++] {code/polynomial.cpp}
-
-\section{2-SAT}
-$ n $: number of vars
-\lstinputlisting [language=c++] {code/sat2.cpp}
-
-\section{SAT Solver}
-$ n $: number of vars
-\lstinputlisting [language=c++] {code/sat.cpp}
 
 \section{Roman Numerals}
 \lstinputlisting [language=c++] {code/roman.cpp}
@@ -185,6 +191,15 @@ $ n $: number of vars
 \section{Z-algorithm}
 $ z_i $ is the length of the longest substring starting from $ s_i $ which is also a prefix of $ s $.
 \lstinputlisting [language=c++] {code/z.cpp}
+
+\section{Longest Palindromic Substring}
+$ s $ should be preprocessed to the form $ |a|b|c|c|b|a| $\\
+$ p_i $ is the length of  LPS with center $ i $\\
+\lstinputlisting [language=c++] {code/lps.cpp}
+
+\section{Lexicographically Smallest Rotation}
+\lstinputlisting [language=c++] {code/lsr.cpp}
+
 \vfill\null
 
 \section{AC Trie}
@@ -196,16 +211,6 @@ $ z_i $ is the length of the longest substring starting from $ s_i $ which is al
 $ sar_i $ is the index of sorted suffices \\
 $ rk_i $ is the rank of suffix starting from $ s_i $
 \lstinputlisting [language=c++] {code/suffix_array.cpp}
-
-\vfill\null
-
-\section{Longest Palindromic Substring}
-$ s $ should be preprocessed to the form $ |a|b|c|c|b|a| $\\
-$ p_i $ is the length of  LPS with center $ i $\\
-\lstinputlisting [language=c++] {code/lps.cpp}
-
-\section{Lexicographically Smallest Rotation}
-\lstinputlisting [language=c++] {code/lsr.cpp}
 
 \newpage
 \part{Graph}
@@ -272,3 +277,4 @@ $ O((\sum a_i)^{1.5}) $
 \lstinputlisting [language=c++] {code/builtin.cpp}
 
 \end {document}
+
