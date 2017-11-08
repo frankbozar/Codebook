@@ -69,8 +69,6 @@ Team Reference Document}
 \tableofcontents
 
 ~\newline
-~\newline
-~\newline
 
 \lstinputlisting [language=sh] {code/vimrc.txt}
 \#pragma GCC optimize (2)
@@ -300,4 +298,40 @@ $ O((\sum a_i)^{1.5}) $
 \section{Link Cut Tree}
 \lstinputlisting [language=c++] {LinkCut1.cpp}
 \lstinputlisting [language=c++] {LinkCut2.cpp}
+
+\part{Theorems}
+$\chi(G)$: vertex chromatic number \\
+$\chi'(G)$: edge chromatic number \\
+$D(G)$: maximum degree \\
+$\chi(G) \leq D(G)$ for connected simple graph, unless $G$ is complete or an odd cycle \\
+$\chi(G) \leq D(G)+1$ \\
+$\chi'(G)=D(G) \text{ or } D(G)+1$ \\
+$\chi'(G)=D(G)$ if G is bipartite \\
+Every planar graph can be 4-colored \\
+~\newline
+$G: \max IS+\min VC=V$ \\
+$G: |\max matching|+|\min EC|=|V|$ \\
+$B: |\max matching|=|\max flow|=|\min VC|$ \\
+$B: |\min EC|+|\min VC|=|V|$ \\
+~\newline
+For non-negative integer $n,m$ and prime $p$, $\binom{m}{n}\equiv\prod_{i=0}^k\binom{m_i}{n_i}\pmod p$\\
+	where $m_i$ is the $i$-th digit of $m$ in base $p$. \\
+\vfill\null
+A sequence of non-negative integers $d_1\geq\cdots\geq d_n$ can be represented as the degree sequence of a finite simple graph on $n$ vertices if and only if $d_1+\cdots+d_n$ is even and $\sum^{k}_{i=1}d_i\leq k(k-1)+ \sum^n_{i=k+1} \min(d_i,k)$
+holds for every $k$ in $1\leq k\leq n$ \\
+~\newline
+A sequence $((a_1,b_1 ),\ldots,(a_n,b_n))$ of non-negative integer pairs with $a_1\geq\cdots\geq a_n$ is realizable on simple digraph if and only if $\sum_{i=1}^{n}a_i=\sum_{i=1}^{n}b_i$ and\\ 
+$\sum^k_{i=1} a_i\leq \sum^k_{i=1} \min(b_i,k-1)+ \sum^n_{i=k+1} \min(b_i,k)$ holds for every $k$ in $1 \leq  k \leq n$ \\
+~\newline
+A pair of sequences of non-negative integers $(a_1,\ldots,a_n)$ and $(b_1,\ldots,b_n)$ with $a_1\geq\cdots\geq a_n$ is realizable on bipartite graph if and only if $\sum_{i=1}^{n}a_i=\sum_{i=1}^{n}b_i$ and $\sum^k_{i=1} a_i\leq \sum^n_{i=1} \min(b_i,k)$ holds for every $k$ such that $1 \leq  k \leq n$ \\
+~\newline
+
+
+
+
+
+
+
+
+
 \end {document}
