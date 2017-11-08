@@ -19,8 +19,7 @@ void U(int a,int b){s[F(b)]=F(a);}
 void init(int id,int L,int R) {
 	node[id]=(Node){L,R,-1};
 	if(L==R)return;
-	init(id*2,L,(L+R)/2);
-	init(id*2+1,(L+R)/2+1,R);
+	init(id*2,L,(L+R)/2); init(id*2+1,(L+R)/2+1,R);
 }
 void ins(int id,int x) {
 	if(node[id].key==-1 || p[node[id].key].w>p[x].w)node[id].key=x;
@@ -37,8 +36,7 @@ int Q(int id,int L,int R){
 }
 void calc() {
 	REP(i,n) {
-		p[i].z=p[i].y-p[i].x;
-		p[i].w=p[i].x+p[i].y;
+		p[i].z=p[i].y-p[i].x; p[i].w=p[i].x+p[i].y;
 	}
 	sort(p,p+n,cpz);
 	int cnt=0,j,k;
@@ -59,29 +57,19 @@ LL MST() {
 	sort(e,e+m);
 	REP(i,m) {
 		if(F(e[i].a)==F(e[i].b))continue;
-		U(e[i].a,e[i].b);
-		r+=e[i].c;
+		U(e[i].a,e[i].b);r+=e[i].c;
 	}
 	return r;
 }
 int main(){
-	int ts;
-	scanf("%d", &ts);
-	while (ts--) {
-		m = 0;
-		scanf("%d",&n);
-		REP(i,n) {
-			scanf("%d%d",&p[i].x,&p[i].y);
-			p[i].id=s[i]=i;
-		}
-		calc();
-		REP(i,n)p[i].y= -p[i].y;
-		calc();
-		REP(i,n)swap(p[i].x,p[i].y);
-		calc();
-		REP(i,n)p[i].x=-p[i].x;
-		calc();
-		printf("%lld\n",MST()*2);
+	m = 0;
+	scanf("%d",&n);
+	REP(i,n) {
+		scanf("%d%d",&p[i].x,&p[i].y);
+		p[i].id=s[i]=i;
 	}
-	return 0;
+	calc();REP(i,n)p[i].y= -p[i].y;
+	calc();REP(i,n)swap(p[i].x,p[i].y);
+	calc();REP(i,n)p[i].x=-p[i].x;
+	calc();printf("%lld\n",MST()*2);
 }

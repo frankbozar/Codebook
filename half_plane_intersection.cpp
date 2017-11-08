@@ -17,8 +17,7 @@ bool isin(Line l0, Line l1, Line l2) {// Check inter(l1, l2) in l0
 }
 /* If no solution, check: 1. ret.size() < 3
  * Or more precisely, 2. interPnt(ret[0], ret[1])
- * in all the lines. (use (l.S - l.F).cross(p - l.F) > 0
- */
+ * in all the lines. (use (l.S - l.F).cross(p - l.F) > 0 */
 vector<Line> halfPlaneInter(vector<Line> lines) {
 	int sz = lines.size();
 	vector<double> ata(sz), ord(sz);

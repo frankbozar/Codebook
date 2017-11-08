@@ -1,15 +1,13 @@
 const int MXN = 100005;
 struct KDTree {
   struct Node {
-    int x,y,x1,y1,x2,y2;
-    int id,f;
+    int x,y,x1,y1,x2,y2,id,f;
     Node *L, *R;
   }tree[MXN];
   int n;
   Node *root;
   LL dis2(int x1, int y1, int x2, int y2) {
-    LL dx = x1-x2;
-    LL dy = y1-y2;
+    LL dx = x1-x2, dy = y1-y2;
     return dx*dx+dy*dy;
   }
   static bool cmpx(Node& a, Node& b){ return a.x<b.x; }
@@ -18,8 +16,7 @@ struct KDTree {
     n = ip.size();
     for (int i=0; i<n; i++) {
       tree[i].id = i;
-      tree[i].x = ip[i].first;
-      tree[i].y = ip[i].second;
+      tree[i].x = ip[i].first; tree[i].y = ip[i].second;
     }
     root = build_tree(0, n-1, 0);
   }
@@ -30,7 +27,6 @@ struct KDTree {
     nth_element(tree+L, tree+M, tree+R+1, tree[M].f ? cmpy : cmpx);
     tree[M].x1 = tree[M].x2 = tree[M].x;
     tree[M].y1 = tree[M].y2 = tree[M].y;
-
     tree[M].L = build_tree(L, M-1, dep+1);
     if (tree[M].L) {
       tree[M].x1 = min(tree[M].x1, tree[M].L->x1);
@@ -49,18 +45,13 @@ struct KDTree {
   }
   int touch(Node* r, int x, int y, LL d2){
     LL dis = sqrt(d2)+1;
-    if (x<r->x1-dis || x>r->x2+dis ||
-        y<r->y1-dis || y>r->y2+dis)
-      return 0;
-    return 1;
+    return !(x<r->x1-dis || x>r->x2+dis || y<r->y1-dis || y>r->y2+dis);
   }
-  void nearest(Node* r, int x, int y,
-               int &mID, LL &md2){
+  void nearest(Node* r, int x, int y, int &mID, LL &md2){
     if (!r || !touch(r, x, y, md2)) return;
     LL d2 = dis2(r->x, r->y, x, y);
     if (d2 < md2 || (d2 == md2 && mID < r->id)) {
-      mID = r->id;
-      md2 = d2;
+      mID = r->id;i md2 = d2;
     }
     // search order depends on split dim
     if ((r->f == 0 && x < r->x) ||

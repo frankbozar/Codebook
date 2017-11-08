@@ -2,14 +2,11 @@
    Given a sets of points on 2D plane, find a
    triangulation such that no points will strictly
    inside circumcircle of any triangle.
-
 find : return a triangle contain given point
 add_point : add a point into triangulation
-
 A Triangle is in triangulation iff. its has_chd is 0.
 Region of triangle u: iterate each u.edge[i].tri,
 each points are u.p[(i+1)%3], u.p[(i+2)%3]
-
 calculation involves O(|V|^6) */
 const int N = 100000 + 5;
 const type inf = 2e3;
@@ -38,24 +35,16 @@ struct Edge {
 	Edge(TriRef _tri, SdRef _side):tri(_tri), side(_side){}
 };
 struct Tri {
-	Pt p[3];
-	Edge edge[3];
-	TriRef chd[3];
-	Tri() {}
+	Pt p[3]; Edge edge[3]; TriRef chd[3]; Tri() {}
 	Tri(const Pt& p0, const Pt& p1, const Pt& p2) {
 		p[0] = p0; p[1] = p1; p[2] = p2;
 		chd[0] = chd[1] = chd[2] = 0;
 	}
 	bool has_chd() const { return chd[0] != 0; }
-	int num_chd() const {
-		return chd[0] == 0 ? 0
-			: chd[1] == 0 ? 1
-			: chd[2] == 0 ? 2 : 3;
-	}
+	int num_chd() const { return chd[0] == 0 ? 0 : chd[1] == 0 ? 1 : chd[2] == 0 ? 2 : 3; }
 	bool contains(Pt const& q) const {
 		for( int i = 0 ; i < 3 ; i ++ )
-			if( side(p[i], p[(i + 1) % 3] , q) < -eps )
-				return false;
+			if( side(p[i], p[(i + 1) % 3] , q) < -eps ) return false;
 		return true;
 	}
 } pool[ N * 10 ], *tris;
@@ -64,21 +53,18 @@ void edge( Edge a, Edge b ){
 	if(b.tri) b.tri->edge[b.side] = a;
 }
 struct Trig { // Triangulation
-	Trig(){
-		the_root = // Tri should at least contain all points
-			new(tris++)Tri(Pt(-inf,-inf),Pt(+inf+inf,-inf),Pt(-inf,+inf+inf));
+	Trig(){ // Tri should at least contain all points
+		the_root = new(tris++)Tri(Pt(-inf,-inf),Pt(+inf+inf,-inf),Pt(-inf,+inf+inf));
 	}
 	TriRef find(Pt p)const{ return find(the_root,p); }
 	void add_point(const Pt& p){ add_point(find(the_root,p),p); }
 	TriRef the_root;
 	static TriRef find(TriRef root, const Pt& p) {
 		while( true ){
-			if( !root->has_chd() )
-				return root;
+			if( !root->has_chd() ) return root;
 			for( int i = 0; i < 3 && root->chd[i] ; ++i )
 				if (root->chd[i]->contains(p)) {
-					root = root->chd[i];
-					break;
+					root = root->chd[i]; break;
 				}
 		}
 		assert( false ); // "point not found"
@@ -95,12 +81,8 @@ struct Trig { // Triangulation
 		edge(Edge(tab,2), root->edge[2]);
 		edge(Edge(tbc,2), root->edge[0]);
 		edge(Edge(tca,2), root->edge[1]);
-		root->chd[0] = tab;
-		root->chd[1] = tbc;
-		root->chd[2] = tca;
-		flip(tab,2);
-		flip(tbc,2);
-		flip(tca,2);
+		root->chd[0] = tab; root->chd[1] = tbc; root->chd[2] = tca;
+		flip(tab,2); flip(tbc,2); flip(tca,2);
 	}
 	void flip(TriRef tri, SdRef pi) {
 		TriRef trj = tri->edge[pi].tri;
@@ -124,21 +106,18 @@ struct Trig { // Triangulation
 vector<TriRef> triang;
 set<TriRef> vst;
 void go( TriRef now ){
-	if( vst.find( now ) != vst.end() )
-		return;
+	if( vst.find( now ) != vst.end() ) return;
 	vst.insert( now );
 	if( !now->has_chd() ){
 		triang.push_back( now );
 		return;
 	}
-	for( int i = 0 ; i < now->num_chd() ; i ++ )
-		go( now->chd[ i ] );
+	for( int i = 0 ; i < now->num_chd() ; i ++ ) go( now->chd[ i ] );
 }
 void build( int n , Pt* ps ){
 	tris = pool;
 	random_shuffle(ps, ps + n);
 	Trig tri;
-	for(int i = 0; i < n; ++ i)
-		tri.add_point(ps[i]);
+	for(int i = 0; i < n; ++ i) tri.add_point(ps[i]);
 	go( tri.the_root );
 }
