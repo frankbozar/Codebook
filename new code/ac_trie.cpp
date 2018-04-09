@@ -20,13 +20,12 @@ struct AC{
 		for(Q.push(root); !Q.empty(); Q.pop()){
 			node *now=Q.front();
 			for(int i=0; i<26; i++){
-				node *&t=now->nx[i], *fn=now->fl;
-				if( t ){
-					while( fn && !fn->nx[i] ) fn=fn->fl;
-					t->fl= fn ? fn->nx[i] : root ;
-					t->dl= t->fl->cnt ? t->fl : t->fl->dl ;
-					t->d=now->d+1; Q.push(t);
-				}
+				node *t=now->nx[i], *fn=now->fl;
+				if( !t ) continue;
+				while( fn && !fn->nx[i] ) fn=fn->fl;
+				t->fl= fn ? fn->nx[i] : root ;
+				t->dl= t->fl->cnt ? t->fl : t->fl->dl ;
+				t->d=now->d+1; Q.push(t);
 			}
 		}
 	}
