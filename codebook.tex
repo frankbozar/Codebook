@@ -1,10 +1,15 @@
-\documentclass [landscape,8pt,a4paper,twocolumn]{article}
+\documentclass [landscape,8pt,a4paper,twocolumn]{extarticle}
 \title {NCTU\_Foudre Codebook}
 \usepackage{parskip}
+\usepackage{microtype}
+\usepackage{fontspec}
 \usepackage{xeCJK} 
 %\setCJKmainfont{微軟正黑體}
-\setCJKmainfont{cwTeXKai}
-\setmonofont{DejaVu Sans Mono}
+\setCJKmainfont{Noto Sans Mono CJK TC}
+\setCJKmonofont{Noto Sans Mono CJK TC}
+\setmainfont{Noto Serif}
+\setsansfont{Noto Sans}
+\setmonofont{Noto Sans Mono}
 \usepackage {amsmath}
 \usepackage {listings}
 \usepackage {color}
@@ -12,7 +17,7 @@
 \definecolor {mygreen}{rgb}{0,0.6,0}
 \definecolor {mygray}{rgb}{0.5,0.5,0.5}
 \definecolor {mymauve}{rgb}{0.58,0,0.82}
-\usepackage{fancyheadings}
+\usepackage{fancyhdr}
 \rhead{\thepage}
 \lhead{National Chiao Tung University, NCTU\_Foudre}
 \pagestyle{fancy}
@@ -178,13 +183,13 @@ $ n $: number of vars
 \lstinputlisting [language=c++] {code/roman.cpp}
 
 \section{Geometry from NTU}
-\lstinputlisting [language=c++] {pdd.cpp}
-\lstinputlisting [language=c++] {Intersection_of_lines_and_circles.cpp}
-\lstinputlisting [language=c++] {half_plane_intersection.cpp}
-\lstinputlisting [language=c++] {DelaunayTriangulation.cpp}
-\lstinputlisting [language=c++] {minEnclosingBall.cpp}
-\lstinputlisting [language=c++] {KD_Tree.cpp}
-\lstinputlisting [language=c++] {ManhattanMST.cpp}
+\lstinputlisting [language=c++] {todo/pdd.cpp}
+\lstinputlisting [language=c++] {todo/Intersection_of_lines_and_circles.cpp}
+\lstinputlisting [language=c++] {todo/half_plane_intersection.cpp}
+\lstinputlisting [language=c++] {todo/DelaunayTriangulation.cpp}
+\lstinputlisting [language=c++] {todo/minEnclosingBall.cpp}
+\lstinputlisting [language=c++] {todo/KD_Tree.cpp}
+\lstinputlisting [language=c++] {todo/ManhattanMST.cpp}
 
 \newpage
 ~\newline
@@ -305,8 +310,8 @@ $ O((\sum a_i)^{1.5}) $
 \lstinputlisting [language=c++] {code/builtin.cpp}
 
 \section{Link Cut Tree}
-\lstinputlisting [language=c++] {LinkCut1.cpp}
-\lstinputlisting [language=c++] {LinkCut2.cpp}
+\lstinputlisting [language=c++] {todo/LinkCut1.cpp}
+\lstinputlisting [language=c++] {todo/LinkCut2.cpp}
 
 \part{Theorems}
 $\chi(G)$: vertex chromatic number \\
@@ -335,6 +340,6 @@ $\sum^k_{i=1} a_i\leq \sum^k_{i=1} \min(b_i,k-1)+ \sum^n_{i=k+1} \min(b_i,k)$ ho
 A pair of sequences of non-negative integers $(a_1,\ldots,a_n)$ and $(b_1,\ldots,b_n)$ with $a_1\geq\cdots\geq a_n$ is realizable on bipartite graph if and only if $\sum_{i=1}^{n}a_i=\sum_{i=1}^{n}b_i$ and $\sum^k_{i=1} a_i\leq \sum^n_{i=1} \min(b_i,k)$ holds for every $k$ such that $1 \leq  k \leq n$ \\
 ~\newline
 
-\lstinputlisting [language=c++] {gomory.cpp}
-\lstinputlisting [language=c++] {graph_hash.cpp}
+\lstinputlisting [language=c++] {todo/gomory.cpp}
+\lstinputlisting [language=c++] {todo/graph_hash.cpp}
 \end {document}
